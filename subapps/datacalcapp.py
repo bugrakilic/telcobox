@@ -3,19 +3,18 @@ from flask import render_template, request, Blueprint
 data_calculator_app = Blueprint('data_calculator_app', __name__)
 
 def calculate_download_time(data_size, data_unit, speed, speed_unit):
-    # Convert data size to bits
+    # Converting data size to bits
     if data_unit == "GB":
         data_size_bits = data_size * 8 * 1e9  # GB to bits
     else:
         data_size_bits = data_size * 8 * 1e6  # MB to bits
 
-    # Convert speed to bits per second
+    # Converting speed to bits per second
     if speed_unit == "Gbps":
         speed_bps = speed * 1e9  # Gbps to bps
     else:
         speed_bps = speed * 1e6  # Mbps to bps
 
-    # Calculate time in seconds
     time_seconds = data_size_bits / speed_bps
     minutes = int(time_seconds // 60)
     seconds = int(time_seconds % 60)

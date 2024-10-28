@@ -2,7 +2,7 @@ from flask import render_template, request, Blueprint
 
 byte_calculator_app = Blueprint('byte_calculator_app', __name__)
 
-# Conversion factors for simplicity
+# Conversion factors 
 UNIT_FACTORS = {
     'bit': 1,
     'byte': 8,
@@ -24,7 +24,7 @@ def index():
         from_unit = request.form.get('from_unit')
         to_unit = request.form.get('to_unit')
         
-        # Perform the conversion
+        # Performing th conversion
         result = convert_units(amount, from_unit, to_unit)
         return render_template('byte_calculator.html', amount=amount, from_unit=from_unit, to_unit=to_unit, result=round(result, 2))
     return render_template('byte_calculator.html', amount='', from_unit='', to_unit='', result=None)

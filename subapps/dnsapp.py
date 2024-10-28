@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request
 import dns.resolver
 
-# Create a Blueprint object for the sub-app
 dns_lookup_app = Blueprint('dns_lookup_app', __name__, template_folder='templates')
 
 # DNS lookup function
@@ -12,7 +11,6 @@ def dns_lookup(record_type, domain):
     except Exception as e:
         return [f"Error: {e}"]
 
-# Define a route for the DNS lookup page
 @dns_lookup_app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':

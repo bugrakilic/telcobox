@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request
 
-# Define the Blueprint
 raid_app = Blueprint('raid_app', __name__, template_folder='templates')
 
+# Function to RAID calculation 
 def calculate_raid(num_disks, disk_size, raid_level):
     total_capacity = 0
     redundancy = 0

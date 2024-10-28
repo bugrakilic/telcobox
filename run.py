@@ -11,7 +11,7 @@ from subapps.sslapp import ssl_checker_app
 
 app = Flask(__name__)
 
-# Register the dns_lookup_app Blueprint with URL prefixes. 
+# Registering Blueprint for each application with URL prefixes. 
 app.register_blueprint(dns_lookup_app, url_prefix='/dns-lookup')
 app.register_blueprint(ip_subnet_app, url_prefix='/ipsubnet-calculator')
 app.register_blueprint(whats_my_ip_app, url_prefix='/whats-my-ip')
@@ -22,7 +22,7 @@ app.register_blueprint(data_calculator_app, url_prefix='/data-calculator')
 app.register_blueprint(byte_calculator_app, url_prefix='/byte-calculator')
 app.register_blueprint(ssl_checker_app, url_prefix='/ssl-checker')
 
-# Define routes for the main app
+# Defining routes for the main app
 @app.route('/')
 def home():
     return render_template('index.html')

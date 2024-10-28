@@ -4,7 +4,6 @@ import statistics
 import time
 import logging
 
-# Define the blueprint
 speedtest_app = Blueprint('speedtest_app', __name__, template_folder='templates')
 
 # Function to measure jitter with a limited number of pings
@@ -14,7 +13,7 @@ def measure_jitter(st, server, num_pings=3):
         st.get_best_server([server])
         ping = st.results.ping
         pings.append(ping)
-        time.sleep(0.5)  # Small delay between pings to avoid overwhelming the server
+        time.sleep(0.5) 
     jitter = statistics.stdev(pings) if len(pings) > 1 else None  # Calculate jitter
     return jitter
 
@@ -59,12 +58,10 @@ def run_speed_test():
         logging.error("An unexpected error occurred: %s", e)
         return jsonify(error="An error occurred while running the speed test."), 500
 
-# Homepage for the speedtest blueprint
 @speedtest_app.route('/')
 def index():
     return render_template('speedtest.html')
 
-# API endpoint to start the speed test
 @speedtest_app.route('/start-test', methods=['GET'])
 def start_test():
     download, upload, ping, jitter, server_info = run_speed_test()

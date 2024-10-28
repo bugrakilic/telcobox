@@ -5,6 +5,7 @@ from datetime import datetime
 
 ssl_checker_app = Blueprint('ssl_checker_app', __name__)
 
+# Function to check SSL and issuer 
 def get_ssl_info(hostname):
     context = ssl.create_default_context()
     try:
