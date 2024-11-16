@@ -1,81 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAID Calculator</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="icon" sizes="32px" type="image/x-icon" href="../static/mergenlogo.png">
-    <!-- Font embed code from Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <br>
-    <div>
-        <h3 class="card-title" style="color: #007bff; text-align: center"><a href="/"><b>Mergen</b></a></h3>
-    </div>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h1 class="text-center card-title">RAID Calculation Tool</h1>
-                        <form method="post">
-                            <div class="mb-3">
-                                <label for="num_disks" class="form-label">Number of Disks</label>
-                                <input type="number" id="num_disks" name="num_disks" required class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="disk_size" class="form-label">Disk Size (GB)</label>
-                                <input type="number" id="disk_size" name="disk_size" required class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="raid_level" class="form-label">RAID Level</label>
-                                <select id="raid_level" name="raid_level" class="form-select">
-                                    <option value="0">RAID 0</option>
-                                    <option value="1">RAID 1</option>
-                                    <option value="5">RAID 5</option>
-                                    <option value="6">RAID 6</option>
-                                    <option value="10">RAID 10</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-3">Calculate</button>
-                        </form>
-                        {% if result %}
-                            <div class="mt-4">
-                                <h5>Calculation Results</h5>
-                                <p><strong>Total Usable Capacity:</strong> {{ result.total_capacity }} GB</p>
-                                <p><strong>Redundancy:</strong> {{ result.redundancy }} disk(s)</p>
-                                <p><strong>Performance:</strong> {{ result.performance }}</p>
-                            </div>
-                        {% endif %}
-                        <a href="/" class="btn btn-secondary mt-4">Back</a>
+{% extends 'base.html' %}
+
+{% block title %}RAID Calculator{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="text-center card-title">RAID Calculation Tool</h1>
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="num_disks" class="form-label">Number of Disks</label>
+                            <input type="number" id="num_disks" name="num_disks" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="disk_size" class="form-label">Disk Size (GB)</label>
+                            <input type="number" id="disk_size" name="disk_size" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="raid_level" class="form-label">RAID Level</label>
+                            <select id="raid_level" name="raid_level" class="form-select">
+                                <option value="0">RAID 0</option>
+                                <option value="1">RAID 1</option>
+                                <option value="5">RAID 5</option>
+                                <option value="6">RAID 6</option>
+                                <option value="10">RAID 10</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Calculate</button>
+                    </form>
+
+                    {% if result %}
+                    <div class="mt-4">
+                        <h5>Calculation Results</h5>
+                        <p><strong>Total Usable Capacity:</strong> {{ result.total_capacity }} GB</p>
+                        <p><strong>Redundancy:</strong> {{ result.redundancy }} disk(s)</p>
+                        <p><strong>Performance:</strong> {{ result.performance }}</p>
                     </div>
+                    {% endif %}
+                    <a href="/" class="btn btn-secondary mt-4">Back</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-white text-dark py-4">
-        <div class="container text-center">
-            <div class="mb-3">
-                <a href="mailto:hello@telcobox.net" target="_blank"><img src="https://telcobox.net/static/images/email.png" alt="email" class="mx-1"></a>
-                <a href="https://x.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/twitter.png" alt="email" class="mx-1"></a>
-                <a href="https://github.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/github.png" alt="email" class="mx-1"></a>
-            </div>
-            <div>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="https://telcobox.net" target="_blank">Telcobox</a>
-                <p>This is an open-source project. Please consider contributing.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+</div>
+{% endblock %}

@@ -1,104 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mergen Telco Toolbox</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="icon" sizes="32px" type="image/x-icon" href="static/mergenlogo.png">
-    <!-- Font embed code from Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC9QX2WYN8"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+{% extends "base.html" %}
 
-    gtag('config', 'G-BC9QX2WYN8');
-    </script>
-    <style>
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h1 class="card-title" style="color: #007bff; font-weight: bold">Mergen - Telco Toolbox</h1>
-                        <p class="lead mt-4">Choose an app to use:</p>
-                        <!-- 3-Column Grid Layout -->
-                        <div class="row mt-4">
-                            <div class="col-md-4 mb-3">
-                                <a href="/ipsubnet-calculator" class="btn btn-light btn-lg w-100">
-                                    <img src="static/calculator.svg" alt="IP Address Calculator Icon" width="24" height="24"> IP Address Calculator</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/whats-my-ip" class="btn btn-light btn-lg w-100">
-                                    <img src="static/ip-address-tag.svg" alt="What's My IP Address Icon" width="24" height="24"> What's My IP Address</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/dns-lookup" class="btn btn-light btn-lg w-100">
-                                    <img src="static/dns.svg" alt="DNS Lookup Tool Icon" width="24" height="24"> DNS Lookup Tool</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/ping-latency-checker" class="btn btn-light btn-lg w-100">
-                                    <img src="static/connection-check.svg" alt="Ping Latency Checker Icon" width="24" height="24"> Ping & Latency Checker</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/speedtest" class="btn btn-light btn-lg w-100">
-                                    <img src="static/speedtest.svg" alt="Bandwidth Speed Test Icon" width="24" height="24"> Bandwidth Speed Test</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/raid-calculator" class="btn btn-light btn-lg w-100">
-                                    <img src="static/server.svg" alt="RAID Calculator Icon" width="24" height="24"> RAID Calculator</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/data-calculator" class="btn btn-light btn-lg w-100">
-                                    <img src="static/data-download.svg" alt="Data Download Calculator Icon" width="24" height="24"> Data Download Calculator</a>
-                            </div>
+{% block title %}Mergen - Telco Toolbox{% endblock %}
 
-                            <div class="col-md-4 mb-3">
-                                <a href="/byte-calculator" class="btn btn-light btn-lg w-100"> <!-- tba -->
-                                    <img src="static/convert.svg" alt="Byte/Bit Converter Icon" width="24" height="24"> Byte/Bit Converter</a>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <a href="/ssl-checker" class="btn btn-light btn-lg w-100"> <!-- tba -->
-                                    <img src="static/checker.svg" alt="SSL/TLS Checker Icon" width="24" height="24"> SSL/TLS Checker</a>
-                            </div>
+{% block content %}
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title" style="color: #007bff; font-weight: bold">Mergen Toolbox</h1>
+                    <p class="lead mt-4">Choose an app to use:</p>
+                    <!-- 3-Column Grid Layout -->
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-3">
+                            <a href="/ipsubnet-calculator" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='calculator.svg') }}" alt="IP Address Calculator Icon" width="24" height="24"> IP Address Calculator</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/whats-my-ip" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='ip-address-tag.svg') }}" alt="What's My IP Address Icon" width="24" height="24"> What's My IP Address</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/dns-lookup" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='dns.svg') }}" alt="DNS Lookup Tool Icon" width="24" height="24"> DNS Lookup Tool</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/ping-latency-checker" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='connection-check.svg') }}" alt="Ping Latency Checker Icon" width="24" height="24"> Ping & Latency Checker</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/speedtest" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='speedtest.svg') }}" alt="Bandwidth Speed Test Icon" width="24" height="24"> Bandwidth Speed Test</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/raid-calculator" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='server.svg') }}" alt="RAID Calculator Icon" width="24" height="24"> RAID Calculator</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/data-calculator" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='data-download.svg') }}" alt="Data Download Calculator Icon" width="24" height="24"> Data Download Calculator</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/byte-calculator" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='convert.svg') }}" alt="Byte/Bit Converter Icon" width="24" height="24"> Byte/Bit Converter</a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/ssl-checker" class="btn btn-light btn-lg w-100">
+                                <img src="{{ url_for('static', filename='checker.svg') }}" alt="SSL/TLS Checker Icon" width="24" height="24"> SSL/TLS Checker</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-white text-dark py-4">
-        <div class="container text-center">
-            <div class="mb-3">
-                <a href="mailto:hello@telcobox.net" target="_blank"><img src="https://telcobox.net/static/images/email.png" alt="email" class="mx-1"></a>
-                <a href="https://x.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/twitter.png" alt="email" class="mx-1"></a>
-                <a href="https://github.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/github.png" alt="email" class="mx-1"></a>
-            </div>
-            <div>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="https://telcobox.net" target="_blank">Telcobox</a>
-                <p>This is an open-source project. Please consider contributing.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+</div>
+{% endblock %}

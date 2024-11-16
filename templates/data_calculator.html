@@ -1,88 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Download Calculator</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="icon" sizes="32px" type="image/x-icon" href="../static/mergenlogo.png">
-    <!-- Font embed code from Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <br>
-    <div>
-        <h3 class="card-title" style="color: #007bff; text-align: center"><a href="/"><b>Mergen</b></a></h3>
-    </div>
-    <div class="container mt-5">
-        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h1 class="text-center card-title">Data Download Calculator</h1>
-                    <form method="POST" class="mt-4">
-                        <div class="form-group">
-                            <label for="data_size">Data Size</label>
-                            <input type="number" class="form-control" id="data_size" name="data_size" placeholder="Enter data size" required>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="data_unit">Data Unit</label>
-                            <select class="form-control" id="data_unit" name="data_unit">
-                                <option value="GB">GB</option>
-                                <option value="MB">MB</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="speed">Download Speed</label>
-                            <input type="number" class="form-control" id="speed" name="speed" placeholder="Enter speed" required>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="speed_unit">Speed Unit</label>
-                            <select class="form-control" id="speed_unit" name="speed_unit">
-                                <option value="Mbps">Mbps</option>
-                                <option value="Gbps">Gbps</option>
-                            </select>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Calculate</button>
-                    </form>
+{% extends "base.html" %}
 
-                    {% if minutes is not none and seconds is not none %}
-                    <div class="mt-4">
-                        <h3>Download Time for {{ data_size }} {{ data_unit }} at {{ speed }} {{ speed_unit }}:</h3>
-                        <p>{{ minutes }} minutes and {{ seconds }} seconds</p>
+{% block title %}Data Download Calculator{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="text-center card-title">Data Download Calculator</h1>
+                <form method="POST" class="mt-4">
+                    <div class="form-group">
+                        <label for="data_size">Data Size</label>
+                        <input type="number" class="form-control" id="data_size" name="data_size" placeholder="Enter data size" required>
                     </div>
-                    {% endif %}
-                    <div class="mt-3">
-                        <a href="/" class="btn btn-secondary">Back</a>
+                    <br>
+                    <div class="form-group">
+                        <label for="data_unit">Data Unit</label>
+                        <select class="form-control" id="data_unit" name="data_unit">
+                            <option value="GB">GB</option>
+                            <option value="MB">MB</option>
+                        </select>
                     </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="speed">Download Speed</label>
+                        <input type="number" class="form-control" id="speed" name="speed" placeholder="Enter speed" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="speed_unit">Speed Unit</label>
+                        <select class="form-control" id="speed_unit" name="speed_unit">
+                            <option value="Mbps">Mbps</option>
+                            <option value="Gbps">Gbps</option>
+                        </select>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </form>
+
+                {% if minutes is not none and seconds is not none %}
+                <div class="mt-4">
+                    <h3>Download Time for {{ data_size }} {{ data_unit }} at {{ speed }} {{ speed_unit }}:</h3>
+                    <p>{{ minutes }} minutes and {{ seconds }} seconds</p>
+                </div>
+                {% endif %}
+                <div class="mt-3">
+                    <a href="/" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- footer -->
-    <footer class="bg-white text-dark py-4">
-        <div class="container text-center">
-            <div class="mb-3">
-                <a href="mailto:hello@telcobox.net" target="_blank"><img src="https://telcobox.net/static/images/email.png" alt="email" class="mx-1"></a>
-                <a href="https://x.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/twitter.png" alt="email" class="mx-1"></a>
-                <a href="https://github.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/github.png" alt="email" class="mx-1"></a>
-            </div>
-            <div>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="https://telcobox.net" target="_blank">Telcobox</a>
-                <p>This is an open-source project. Please consider contributing.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+</div>
+{% endblock %}

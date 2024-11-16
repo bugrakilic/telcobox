@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Address Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" sizes="32px" type="image/x-icon" href="../static/mergenlogo.png">
+    <!-- Font embed code from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <br>
+    <div>
+        <h3 class="card-title" style="color: #007bff; text-align: center"><a href="/"><b>Mergen</b></a></h3>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h1 class="text-center card-title">IP Address Calculator</h1>
+                        <p class="lead">Calculate IPv4 and IPv6 subnets.</p>
+                        
+                        <!-- IPv4 Subnet Calculator -->
+                        <form method="post">
+                            <h4>IPv4 Subnet Calculator</h4>
+                            <div class="mb-3">
+                                <label for="ipv4_ip" class="form-label">IPv4 Address</label>
+                                <input type="text" id="ipv4_ip" name="ipv4_ip" class="form-control" required placeholder="Enter IPv4 address (e.g., 192.168.1.1)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="ipv4_cidr" class="form-label">CIDR (for example, 24):</label>
+                                <input type="number" id="ipv4_cidr" name="ipv4_cidr" class="form-control" required min="0" max="32">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary" name="ipv4_submit">Calculate</button>
+                            </div>
+                        </form>
+                        
+                        {% if result_ipv4 %}
+                        <div class="result mt-4">
+                            <h4>Calculation Results (IPv4)</h4>
+                            <ul class="list-group mt-3">
+                                <li class="list-group-item"><strong>IP Address:</strong> {{ result_ipv4.ip }}</li>
+                                <li class="list-group-item"><strong>CIDR:</strong> /{{ result_ipv4.cidr }}</li>
+                                <li class="list-group-item"><strong>Subnet Mask:</strong> {{ result_ipv4.subnet_mask }}</li>
+                                <li class="list-group-item"><strong>Network Address:</strong> {{ result_ipv4.network_address }}</li>
+                                <li class="list-group-item"><strong>Broadcast Address:</strong> {{ result_ipv4.broadcast_address }}</li>
+                                <li class="list-group-item"><strong>First Usable IP:</strong> {{ result_ipv4.first_host }}</li>
+                                <li class="list-group-item"><strong>Last Usable IP:</strong> {{ result_ipv4.last_host }}</li>
+                                <li class="list-group-item"><strong>Number of Hosts:</strong> {{ result_ipv4.num_hosts }}</li> 
+                                <!-- Total number of hosts may be added afterwards -->
+                            </ul>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- IPv6 Subnet Calculator -->
+                        <form method="post" class="mt-5">
+                            <h4>IPv6 Subnet Calculator</h4>
+                            <div class="mb-3">
+                                <label for="ipv6_ip" class="form-label">IPv6 Address</label>
+                                <input type="text" id="ipv6_ip" name="ipv6_ip" class="form-control" required placeholder="Enter IPv6 address (e.g., 2001:db8::1)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="ipv6_cidr" class="form-label">CIDR (for example, 64)</label>
+                                <input type="number" id="ipv6_cidr" name="ipv6_cidr" class="form-control" required min="0" max="128">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary" name="ipv6_submit">Calculate</button>
+                            </div>
+                        </form>
+                        
+                        {% if result_ipv6 %}
+                        <div class="result mt-4">
+                            <h4>Calculation Results (IPv6)</h4>
+                            <ul class="list-group mt-3">
+                                <li class="list-group-item"><strong>IP Address:</strong> {{ result_ipv6.ip }}</li>
+                                <li class="list-group-item"><strong>CIDR:</strong> /{{ result_ipv6.cidr }}</li>
+                                <li class="list-group-item"><strong>Network Address:</strong> {{ result_ipv6.network_address }}</li>
+                                <li class="list-group-item"><strong>First Usable IP:</strong> {{ result_ipv6.first_host }}</li>
+                                <li class="list-group-item"><strong>Last Usable IP:</strong> {{ result_ipv6.last_host }}</li>
+                                <li class="list-group-item"><strong>Number of Hosts:</strong> {{ result_ipv6.num_hosts }}</li> 
+                                <!-- Total number of hosts may be added afterwards -->
+                            </ul>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Back to Home Button -->
+                        <a href="/" class="btn btn-secondary mt-4">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white text-dark py-4">
+        <div class="container text-center">
+            <div class="mb-3">
+                <a href="mailto:hello@telcobox.net" target="_blank"><img src="https://telcobox.net/static/images/email.png" alt="email" class="mx-1"></a>
+                <a href="https://x.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/twitter.png" alt="email" class="mx-1"></a>
+                <a href="https://github.com/telcobox" target="_blank"><img src="https://telcobox.net/static/images/github.png" alt="email" class="mx-1"></a>
+            </div>
+            <div>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="https://telcobox.net" target="_blank">Telcobox</a>
+                <p>This is an open-source project. Please consider contributing.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
