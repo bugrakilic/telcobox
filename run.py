@@ -19,7 +19,7 @@ app.register_blueprint(ping_latency_app, url_prefix='/ping-latency-checker')
 app.register_blueprint(speedtest_app, url_prefix='/speedtest')
 app.register_blueprint(raid_app, url_prefix='/raid-calculator')
 app.register_blueprint(data_calculator_app, url_prefix='/data-calculator')
-app.register_blueprint(byte_calculator_app, url_prefix='/byte-calculator')
+app.register_blueprint(byte_calculator_app, url_prefix='/bytebit-converter')
 app.register_blueprint(ssl_checker_app, url_prefix='/ssl-checker')
 
 # Defining routes for the main app

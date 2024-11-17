@@ -2,14 +2,18 @@ from flask import render_template, request, Blueprint
 
 byte_calculator_app = Blueprint('byte_calculator_app', __name__)
 
-# Conversion factors 
+# Conversion factors
 UNIT_FACTORS = {
     'bit': 1,
     'byte': 8,
     'KB': 8 * 1024,
     'MB': 8 * 1024 * 1024,
     'GB': 8 * 1024 * 1024 * 1024,
+    'TB': 8 * 1024 * 1024 * 1024 * 1024,
+    'PB': 8 * 1024 * 1024 * 1024 * 1024 * 1024,
+    'EB': 8 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
 }
+
 
 def convert_units(amount, from_unit, to_unit):
     # Convert to bits
@@ -26,5 +30,5 @@ def index():
         
         # Performing th conversion
         result = convert_units(amount, from_unit, to_unit)
-        return render_template('byte_calculator.html', amount=amount, from_unit=from_unit, to_unit=to_unit, result=round(result, 2))
-    return render_template('byte_calculator.html', amount='', from_unit='', to_unit='', result=None)
+        return render_template('bytebit_converter.html', amount=amount, from_unit=from_unit, to_unit=to_unit, result=round(result, 2))
+    return render_template('bytebit_converter.html', amount='', from_unit='', to_unit='', result=None)
