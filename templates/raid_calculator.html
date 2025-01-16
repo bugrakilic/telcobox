@@ -34,7 +34,7 @@
 
                     {% if result %}
                     <div class="mt-4">
-                        <h5>Calculation Results</h5>
+                        <h5>Calculation Results for {{ result.num_disks }} disk(s) / {{ result.disk_size }} GB per disk / RAID Level {{ result.raid_level }}.</h5>
                         <p><strong>Total Usable Capacity:</strong> {{ result.total_capacity }} GB</p>
                         <p><strong>Redundancy:</strong> {{ result.redundancy }} disk(s)</p>
                         <p><strong>Performance:</strong> {{ result.performance }}</p>
