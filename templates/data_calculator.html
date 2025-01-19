@@ -8,31 +8,33 @@
         <div class="card shadow-sm">
             <div class="card-body">
                 <h1 class="text-center card-title">Data Download Calculator</h1>
-                <p class="lead text-center">Calculate how much time needed to download an amount of data.</p>
+                <p class="lead text-center">Calculate how much time is needed to download an amount of data.</p>
                 <form method="POST" class="mt-4">
                     <div class="form-group">
                         <label for="data_size">Data Size</label>
-                        <input type="number" class="form-control" id="data_size" name="data_size" placeholder="Enter data size" required>
+                        <input type="number" class="form-control" id="data_size" name="data_size" 
+                               placeholder="Enter data size" value="{{ data_size or '' }}" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="data_unit">Data Unit</label>
                         <select class="form-control" id="data_unit" name="data_unit">
-                            <option value="GB">GB</option>
-                            <option value="MB">MB</option>
+                            <option value="GB" {% if data_unit == 'GB' %}selected{% endif %}>GB</option>
+                            <option value="MB" {% if data_unit == 'MB' %}selected{% endif %}>MB</option>
                         </select>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="speed">Download Speed</label>
-                        <input type="number" class="form-control" id="speed" name="speed" placeholder="Enter speed" required>
+                        <input type="number" class="form-control" id="speed" name="speed" 
+                               placeholder="Enter speed" value="{{ speed or '' }}" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="speed_unit">Speed Unit</label>
                         <select class="form-control" id="speed_unit" name="speed_unit">
-                            <option value="Mbps">Mbps</option>
-                            <option value="Gbps">Gbps</option>
+                            <option value="Mbps" {% if speed_unit == 'Mbps' %}selected{% endif %}>Mbps</option>
+                            <option value="Gbps" {% if speed_unit == 'Gbps' %}selected{% endif %}>Gbps</option>
                         </select>
                     </div>
                     <br>
