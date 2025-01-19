@@ -1,6 +1,7 @@
 import requests
 from flask import Blueprint, render_template, request
 
+# Create the Flask blueprint
 whats_my_ip_app = Blueprint('whats_my_ip_app', __name__, template_folder='templates')
 
 # Function to get the user's IP address
@@ -24,5 +25,9 @@ def index():
     # Get the IP details using FreeIPAPI
     ip_details = get_ip_details(user_ip)
     
+    # Extract latitude and longitude (default to 0 if not provided)
+    latitude = ip_details.get('latitude', 0)
+    longitude = ip_details.get('longitude', 0)
+    
     # Pass the data to the template for rendering
-    return render_template('whats_my_ip.html', user_ip=user_ip, ip_details=ip_details)
+    return render_template('whats_my_ip.html', user_ip=user_ip, ip_details=ip_details, latitude=latitude, longitude=longitude)

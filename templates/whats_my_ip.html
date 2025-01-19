@@ -27,6 +27,9 @@
                         </ul>
                     </div>
 
+                    <!-- Map Section -->
+                    <div id="map" class="mt-4" style="height: 400px;"></div>
+
                     <!-- Back to Home Button -->
                     <a href="/" class="btn btn-secondary mt-4">Back</a>
                 </div>
@@ -34,4 +37,26 @@
         </div>
     </div>
 </div>
+
+<!-- Include Leaflet.js -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // Initialize the map
+    var latitude = {{ latitude }};
+    var longitude = {{ longitude }};
+    var map = L.map('map').setView([latitude, longitude], 13); // Zoom level is 13
+
+    // Add a tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add a marker at the user's location
+    L.marker([latitude, longitude]).addTo(map)
+        .bindPopup("<b>Your Location</b><br>Based on your IP address.")
+        .openPopup();
+</script>
 {% endblock %}
