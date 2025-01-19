@@ -18,13 +18,13 @@
                     <div class="mt-4">
                         <h5>Details</h5>
                         <ul class="list-group">
-                            <li class="list-group-item">ISP: {{ ip_details.isp if ip_details.isp else 'N/A' }}</li>
-                            <li class="list-group-item">ASN: {{ ip_details.asn if ip_details.asn else 'N/A' }}</li>
-                            <li class="list-group-item">Organization: {{ ip_details.org if ip_details.org else 'N/A' }}</li>
-                            <li class="list-group-item">City: {{ ip_details.city if ip_details.city else 'N/A' }}</li>
+                            <li class="list-group-item">IP Version: {{ ip_details.ipVersion if ip_details.ipVersion else 'N/A' }}</li>
+                            <li class="list-group-item">Latitude: {{ ip_details.latitude if ip_details.latitude else 'N/A' }}</li>
+                            <li class="list-group-item">Longtitude: {{ ip_details.longitude if ip_details.longitude else 'N/A' }}</li>
+                            <li class="list-group-item">City: {{ ip_details.cityName if ip_details.cityName else 'N/A' }}</li>
                             <li class="list-group-item">State: {{ ip_details.regionName if ip_details.regionName else 'N/A' }}</li>
-                            <li class="list-group-item">Country: {{ ip_details.country if ip_details.country else 'N/A' }}</li>
-                            <li class="list-group-item">Timezone: {{ ip_details.timezone if ip_details.timezone else 'N/A' }}</li>
+                            <li class="list-group-item">Country: {{ ip_details.countryName if ip_details.countryName else 'N/A' }}</li>
+                            <li class="list-group-item">Timezone: {{ ip_details.timeZones if ip_details.timeZones else 'N/A' }}</li>
                         </ul>
                     </div>
 
