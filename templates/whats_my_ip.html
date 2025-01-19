@@ -13,6 +13,21 @@
                     <div class="alert alert-primary mt-3">
                         <strong>{{ user_ip }}</strong>
                     </div>
+
+                    <!-- Additional IP Details -->
+                    <div class="mt-4">
+                        <h5>Details</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item">ISP: {{ ip_details.isp if ip_details.isp else 'N/A' }}</li>
+                            <li class="list-group-item">ASN: {{ ip_details.asn if ip_details.asn else 'N/A' }}</li>
+                            <li class="list-group-item">Organization: {{ ip_details.org if ip_details.org else 'N/A' }}</li>
+                            <li class="list-group-item">City: {{ ip_details.city if ip_details.city else 'N/A' }}</li>
+                            <li class="list-group-item">State: {{ ip_details.regionName if ip_details.regionName else 'N/A' }}</li>
+                            <li class="list-group-item">Country: {{ ip_details.country if ip_details.country else 'N/A' }}</li>
+                            <li class="list-group-item">Timezone: {{ ip_details.timezone if ip_details.timezone else 'N/A' }}</li>
+                        </ul>
+                    </div>
+
                     <!-- Back to Home Button -->
                     <a href="/" class="btn btn-secondary mt-4">Back</a>
                 </div>
