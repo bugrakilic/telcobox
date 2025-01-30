@@ -1,29 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %}Ping & Latency Checker{% endblock %}
+{% block title %}Latency & IP Lookup{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h1 class="text-center card-title">Ping & Latency Checker</h1>
-                <p class="lead text-center">Check ping and latency of a website by its domain or IP address.</p>
+                <h1 class="text-center card-title">Latency & IP Lookup</h1>
+                <p class="lead text-center">Check latency by ping and get IP details of a domain.</p>
+                
                 <form method="POST" class="mt-4">
                     <div class="form-group">
-                        <label for="host">Domain or IP Address</label>
-                        <input type="text" class="form-control" id="host" name="host" placeholder="Enter domain name (without http/s) or IP address" required>
+                        <label for="host">Domain Name</label>
+                        <input type="text" class="form-control" id="host" name="host" placeholder="Enter domain (without http/s)" required>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Check Ping</button>
+                    <button type="submit" class="btn btn-primary">Check</button>
                 </form>
 
                 {% if result %}
                 <div class="mt-4">
-                    <h3>Ping Results:</h3>
+                    <h3>Results for {{ checked_domain }}</h3>
                     <pre>{{ result }}</pre>
                 </div>
-                {% endif %}
+                {% endif %}               
+                
                 <div class="mt-3">
                     <a href="/" class="btn btn-secondary">Back</a>
                 </div>
