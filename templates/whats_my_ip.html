@@ -22,7 +22,7 @@
                             <li class="list-group-item">Latitude: {{ ip_details.latitude if ip_details.latitude else 'N/A' }}</li>
                             <li class="list-group-item">Longitude: {{ ip_details.longitude if ip_details.longitude else 'N/A' }}</li>
                             <li class="list-group-item">City: {{ ip_details.cityName if ip_details.cityName else 'N/A' }}</li>
-                            <li class="list-group-item">State: {{ ip_details.stateName if ip_details.stateName else 'N/A' }}</li>
+                            <li class="list-group-item">State/Region: {{ ip_details.regionName if ip_details.regionName else 'N/A' }}</li>
                             <li class="list-group-item">Country: {{ ip_details.countryName if ip_details.countryName else 'N/A' }}</li>
                             <li class="list-group-item">Timezone: {{ ip_details.timeZones if ip_details.timeZones else 'N/A' }}</li>
                         </ul>
